@@ -31,7 +31,7 @@ In this project, we implement a simplified version of DenseNet, which consists o
 - **Fully Connected Layer**: After the final dense block, the feature maps are pooled and passed through a fully connected layer that outputs the class probabilities.
 
 
-##Data Preprocessing
+### Data Pre Processing
 The images are first resized to 224x224 pixels, which is a typical input size for CNNs. The preprocessing pipeline includes the following steps:
 
 1.Random Horizontal Flip: Helps the model generalize better by flipping the images horizontally during training.

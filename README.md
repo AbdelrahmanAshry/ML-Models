@@ -76,7 +76,7 @@ TransitionLayer
 
 **Learning Rate**: The learning rate could be tuned using techniques like learning rate scheduling or grid search.
 
-Epoch 92/100, Train Loss: 0.1181, Train Accuracy: 96.24%, Validation Loss: 0.0696, Validation Accuracy: 98.15%
+ Train Loss: 0.1181, Train Accuracy: 96.24%,  Validation Accuracy: 98.15%
 using validation loss to monitor models: 0.0696
 Test Loss: 0.1453, Test Accuracy: 95.33%
 

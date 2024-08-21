@@ -6,7 +6,7 @@ This project implements a simplified version of the DenseNet architecture for a 
 
 - Training: 3087 images
 - Validation: 1028 images
-- Test: 1508 images
+- Test: 1028 images
 
 ## DenseNet Architecture
 

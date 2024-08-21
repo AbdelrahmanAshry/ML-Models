@@ -39,110 +39,25 @@ The images are first resized to 224x224 pixels, which is a typical input size fo
 3. **Normalization**: The images are normalized using mean and standard deviation values [0.485, 0.456, 0.406] and [0.229, 0.224, 0.225] respectively, which are common values for pre-trained models on ImageNet.
 
 ### Model Architecture
-SimpleDenseNet(
-  (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
-  (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-  (relu): ReLU(inplace=True)
-  (pool1): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
-  (block1): DenseBlock(
-    (layers): ModuleList(
-      (0): Sequential(
-        (0): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (1): ReLU(inplace=True)
-        (2): Conv2d(64, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      )
-      (1): Sequential(
-        (0): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (1): ReLU(inplace=True)
-        (2): Conv2d(96, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      )
-      (2): Sequential(
-        (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (1): ReLU(inplace=True)
-        (2): Conv2d(128, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      )
-      (3): Sequential(
-        (0): BatchNorm2d(160, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (1): ReLU(inplace=True)
-        (2): Conv2d(160, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      )
-    )
-  )
-  (trans1): TransitionLayer(
-    (layer): Sequential(
-      (0): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (1): ReLU(inplace=True)
-      (2): Conv2d(192, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (3): AvgPool2d(kernel_size=2, stride=2, padding=0)
-    )
-  )
-  (block2): DenseBlock(
-    (layers): ModuleList(
-      (0): Sequential(
-        (0): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (1): ReLU(inplace=True)
-        (2): Conv2d(96, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      )
-      (1): Sequential(
-        (0): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (1): ReLU(inplace=True)
-        (2): Conv2d(128, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      )
-      (2): Sequential(
-        (0): BatchNorm2d(160, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (1): ReLU(inplace=True)
-        (2): Conv2d(160, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      )
-      (3): Sequential(
-        (0): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (1): ReLU(inplace=True)
-        (2): Conv2d(192, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      )
-    )
-  )
-  (trans2): TransitionLayer(
-    (layer): Sequential(
-      (0): BatchNorm2d(224, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (1): ReLU(inplace=True)
-      (2): Conv2d(224, 112, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (3): AvgPool2d(kernel_size=2, stride=2, padding=0)
-    )
-  )
-  (block3): DenseBlock(
-    (layers): ModuleList(
-      (0): Sequential(
-        (0): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (1): ReLU(inplace=True)
-        (2): Conv2d(112, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      )
-      (1): Sequential(
-        (0): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (1): ReLU(inplace=True)
-        (2): Conv2d(144, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      )
-      (2): Sequential(
-        (0): BatchNorm2d(176, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (1): ReLU(inplace=True)
-        (2): Conv2d(176, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      )
-      (3): Sequential(
-        (0): BatchNorm2d(208, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        (1): ReLU(inplace=True)
-        (2): Conv2d(208, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-      )
-    )
-  )
-  (trans3): TransitionLayer(
-    (layer): Sequential(
-      (0): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-      (1): ReLU(inplace=True)
-      (2): Conv2d(240, 120, kernel_size=(1, 1), stride=(1, 1), bias=False)
-      (3): AvgPool2d(kernel_size=2, stride=2, padding=0)
-    )
-  )
-  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
-  (fc): Linear(in_features=120, out_features=7, bias=True)
-)
+
+## Simple Dense model 
+
+  Initial Convolution
+  
+  DenseBlock
+
+TransitionLayer
+
+ DenseBlock 2
+
+ TransitionLayer 2
+    
+ DenseBlock 3
+ TransitionLayer 3
+
+  Avgpool Layer 
+ Fully connected Layer
+
 
 ### Model Training
 ### Training Parametars

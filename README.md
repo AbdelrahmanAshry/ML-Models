@@ -35,9 +35,9 @@ In this project, we implement a simplified version of DenseNet, which consists o
 The images are first resized to 224x224 pixels, which is a typical input size for CNNs. The preprocessing pipeline includes the following steps:
 
 1. **Random Horizontal Flip**: Helps the model generalize better by flipping the images horizontally during training.
-2. **Random Rotation**: Introduces additional variability by randomly rotating the images by up to 10 degrees.
+2. **Random Rotation**: Introduces additional variability by randomly rotating the images by up to 20 degrees.
 3. **Normalization**: The images are normalized using mean and standard deviation values [0.485, 0.456, 0.406] and [0.229, 0.224, 0.225] respectively, which are common values for pre-trained models on ImageNet.
-
+4. **Jitter** : Changing brightness and contrast and saturation
 ### Model Architecture
 
 ## Simple Dense model 
@@ -62,11 +62,11 @@ TransitionLayer
 ### Model Training
 ### Training Parametars
 
-**Optmizer**: We use the Adam optimizer with a learning rate of 0.001. Adam is chosen for its adaptive learning rate capabilities, making it well-suited for a model that has to generalize well on a small dataset.
+**Optmizer**: We use the Adam optimizer with a learning rate of 0.0001 And Weight decay with 1e-4. Adam is chosen for its adaptive learning rate capabilities, making it well-suited for a model that has to generalize well on a small dataset.
 
 **Loss Function**: CrossEntropyLoss is used as it is standard for multi-class classification problems.
 
-**Epochs**: The model is trained for 10 epochs. This is a starting point; more epochs can be used if the validation loss continues to decrease.
+**Epochs**: The model is trained for 100 epochs. This is a starting point; more epochs can be used if the validation loss continues to decrease.
 
 ### Tuning Parametars
 
@@ -75,6 +75,10 @@ TransitionLayer
 **Number of Layers** in Dense Block: Adding more layers in each dense block will allow the model to capture more complex features but might lead to overfitting on small datasets.
 
 **Learning Rate**: The learning rate could be tuned using techniques like learning rate scheduling or grid search.
+
+Epoch 92/100, Train Loss: 0.1181, Train Accuracy: 96.24%, Validation Loss: 0.0696, Validation Accuracy: 98.15%
+using validation loss to monitor models: 0.0696
+Test Loss: 0.1453, Test Accuracy: 95.33%
 
 ### Future Work
 

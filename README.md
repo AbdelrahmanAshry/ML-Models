@@ -1,5 +1,5 @@
-#Simplified DenseNet for Multi-Class Image Classification
-##Overview
+`Simplified DenseNet for Multi-Class Image Classification
+``Overview
 This project implements a simplified version of the DenseNet architecture for a multi-class image classification task. The model is designed to classify images into one of seven categories using a dataset with relatively small sizes: 3087 training images, 1028 validation images, and 1508 test images.
 
 DenseNet Architecture
